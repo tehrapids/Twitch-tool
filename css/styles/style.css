@@ -1,0 +1,92 @@
+html, body {
+  width:  100%;
+  height: 100%;
+  margin: 0px;
+  overflow: visible;
+}
+#bg {
+    position:absolute;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    overflow: visible;
+    z-index:-1;
+    background: linear-gradient(221deg, #54ACD2, #5991B1, #5F7187, #48569E, #8B4D93);
+    background-size: 800% 800%;
+
+    -webkit-animation: AnimationName 150s ease infinite;
+    -moz-animation: AnimationName 150s ease infinite;
+    animation: AnimationName 150s ease infinite;
+}
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 86%}
+    50%{background-position:100% 15%}
+    100%{background-position:0% 86%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 86%}
+    50%{background-position:100% 15%}
+    100%{background-position:0% 86%}
+}
+@keyframes AnimationName { 
+    0%{background-position:0% 86%}
+    50%{background-position:100% 15%}
+    100%{background-position:0% 86%}
+}
+#particles-js{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+}
+.container1 {
+  background-color: white;
+  position: relative;
+  top: 200px;
+  width: 50%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  animation-delay:3.0s; -moz-animation-delay:3.0s; -webkit-animation-delay:3.0s;
+}
+#wrapper {
+    padding-left: 0;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+.navbar-static-side {
+  position: absolute;
+  margin-right: 15px;
+  width: 270px;
+  z-index: 2001;
+  height: 100%;
+}
+.nav > li.active {
+  border-right: 4px solid #8e44ad;
+  background: #ecf0f1;
+}
+.logo-element {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: white;
+  display: none;
+  padding: 18px 0;
+}
+.nav-text1{
+    text-align: center;
+    padding: 5px;
+    font-weight: 700;
+    color: white;
+}
+.nav-label {
+    font-family: 'Open Sans', helvetica, arial, sans-serif;
+    color: #8e44ad;
+    padding-left: 15px;
+}
+
+
+

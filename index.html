@@ -1,0 +1,226 @@
+<!DOCTYPE HTML5>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Statisitcs site for twitch channels">
+    <meta name="author" content="Ryan Towner">
+    <link rel="shortcut icon" href="css/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="css/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/cool/twitch.css">
+    <link rel="stylesheet" href="css/cool/style.css">
+    <title>Twitch Info Tool</title>
+
+      
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/twitchinfo.js"></script>
+      <style>
+        @import url(https://fonts.googleapis.com/css?family=Raleway:700);
+        .title-text {
+            color: #fff;
+            text-align: center;
+            font-size: 72px;
+            font-family: Raleway;
+            text-decoration: underline;
+            text-shadow: 4px 0px 0px rebeccapurple;
+            margin-top: 15%;
+            margin-bottom: 10%;
+        }
+      </style>
+
+  </head>
+  <body style="background-color: #262626">
+    <div class="container"> 
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <h1 class="title-text">Twitch Info Tool</h1>
+                <h3 style="text-align: center; color: #fff">Enter Twitch Username:</h3>
+                <form id="channelForm">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Username" id="channelName">
+                        <div class="input-group-btn">
+                            <button class="btn btn-info" type="button" id="searchButton" onclick="getChannelInfo()">Search</button>
+                            <button class="btn btn-danger" type="button" onclick="ClearFields()">Reset</button>
+                       </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+      </div>
+   
+      <div id="page-wrapper" class="hidden">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header" style="color: #fff" id="chan-name"></h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-purple">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-user fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div style="font-size: 40px" id="followers"></div>
+                                    <div>Total Followers</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-purple">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-video-camera fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div style="font-size: 40px" id="views"></div>
+                                    <div>Total Views</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-purple">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-info-circle fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div id="create-date" style="font-size: 24px;"></div>
+                                    <div style="padding-top: 23px;">Creation Date</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-purple">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <i class="fa fa-check-square fa-5x"></i>
+                                </div>
+                                <div class="col-xs-9 text-right">
+                                    <div style="font-size: 40px" id="partner"></div>
+                                    <div>Partnered Channel?</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="panel panel-purple">
+                        <div class="panel-heading">
+                            <i class="fa fa-comments-o fa-fw"></i> Channel Emotes
+                        </div>
+                        <div class="panel-body" style="background-color: #d8cbde">
+                            <div class="row">
+                              <div class="col-md-2">
+                                  <table id="emoteTable1"></table>
+                              </div>
+                              <div class="col-md-2">
+                                  <table id="emoteTable2"></table>
+                              </div>
+                              <div class="col-md-2">
+                                  <table id="emoteTable3"></table>
+                              </div>
+                              <div class="col-md-2">
+                                  <table id="emoteTable4"></table>
+                              </div>
+                              <div class="col-md-2">
+                                  <table id="emoteTable5"></table>
+                              </div>
+                              <div class="col-md-2">
+                                  <table id="emoteTable6"></table>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="panel panel-purple">
+                        <div class="panel-heading">
+                            <i class="fa fa-bell fa-fw"></i> Other Info
+                        </div>
+                        <div class="panel-body" style="background-color: #d8cbde">
+                            <div class="list-group">
+                                <a class="list-group-item">
+                                    <i id="avatar"></i>
+                                </a>
+                                <a class="list-group-item">
+                                    <span class="" id="stream-title"></span>
+                                </a>
+                                <a class="list-group-item">
+                                    <span id="game"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+          </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="panel panel-purple">
+                        <div class="panel-heading">
+                            <i class="fa fa-group fa-fw"></i> Most Recent Followers
+                        </div>
+                        <div class="panel-body" style="background-color: #d8cbde">
+                            <div class="row">
+                              <div class="col-md-2">
+                                  <table id="followTable1"></table>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="panel panel-purple">
+                        <div class="panel-heading">
+                            <i class="fa fa-keyboard-o fa-fw"></i> Current Chat:
+                        </div>
+                        <div class="panel-body" style="background-color: #d8cbde">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <div id="chat"></div>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+          
+          <h4 style="text-align: center;">Copyright &copy; Ryan Towner 2016</h4>
+      </div>
+     
+
+      
+      <script type="text/javascript">
+        $("#channelName").keypress(function(event) {
+            if (event.which == 13) {
+                event.preventDefault();
+                $("#searchButton").click();
+                $("#searchButton").attr("onclick","");
+            }
+        });
+      </script>
+  </body>
+</html>
